@@ -1,0 +1,167 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.a1361709.notetakr.NoteTakrFragment"
+    tools:showIn="@layout/activity_note_takr"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.93"
+        android:id="@+id/ll_Note">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_title"
+            android:text="Title"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/et_body"
+            android:layout_weight="0.86"
+            android:text="body"
+            android:gravity="top" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#888888">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/imageView2"
+            android:background="#777777" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:outlineProvider="bounds">
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reminder"
+                android:id="@+id/sw_reminder"
+                android:checked="false"
+                android:singleLine="false"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/et_date"
+            android:visibility="gone"
+            android:inputType="none"
+            android:textIsSelectable="true"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/et_time"
+            android:enabled="true"
+            android:visibility="gone"
+            android:inputType="none"
+            android:textIsSelectable="true"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/imageView"
+            android:background="#777777" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:outlineProvider="bounds">
+
+            <com.example.a1361709.notetakr.CircleView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/clr_01"
+                android:layout_weight="0.02"
+                android:layout_margin="4dp"
+                android:padding="2dp" />
+            <com.example.a1361709.notetakr.CircleView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/clr_02"
+                android:layout_weight="0.02"
+                android:padding="2dp"
+                android:layout_margin="4dp" />
+            <com.example.a1361709.notetakr.CircleView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/clr_03"
+                android:layout_weight="0.02"
+                android:padding="2dp"
+                android:layout_margin="4dp" />
+            <com.example.a1361709.notetakr.CircleView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/clr_04"
+                android:layout_weight="0.02"
+                android:padding="2dp"
+                android:layout_margin="4dp" />
+            <com.example.a1361709.notetakr.CircleView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/clr_05"
+                android:layout_weight="0.02"
+                android:padding="2dp"
+                android:layout_margin="4dp" />
+            <com.example.a1361709.notetakr.CircleView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/clr_06"
+                android:layout_weight="0.02"
+                android:padding="2dp"
+                android:layout_margin="4dp" />
+            <com.example.a1361709.notetakr.CircleView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/clr_07"
+                android:layout_weight="0.02"
+                android:padding="2dp"
+                android:layout_margin="4dp" />
+            <com.example.a1361709.notetakr.CircleView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/clr_08"
+                android:layout_weight="0.02"
+                android:padding="2dp"
+                android:layout_margin="4dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/imageView3"
+            android:background="#777777" />
+
+    </LinearLayout>
+
+</LinearLayout>
