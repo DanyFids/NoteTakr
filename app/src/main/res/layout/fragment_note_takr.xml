@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/et_title"
-            android:text="Title"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:hint="Title" />
 
         <EditText
             android:layout_width="match_parent"
@@ -29,8 +29,8 @@
             android:ems="10"
             android:id="@+id/et_body"
             android:layout_weight="0.86"
-            android:text="body"
-            android:gravity="top" />
+            android:gravity="top"
+            android:hint="Body" />
 
     </LinearLayout>
 

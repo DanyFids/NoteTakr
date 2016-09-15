@@ -1,14 +1,23 @@
 package com.example.a1361709.notetakr;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.TimePicker;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -29,6 +38,11 @@ public class NoteTakrFragment extends Fragment {
     private LinearLayout noteView;
     private EditText date;
     private EditText time;
+
+    private Date dateObj = new Date();
+    private DateFormat dateF = new SimpleDateFormat("yyyy/MM/dd");
+    private DateFormat timeF = new SimpleDateFormat("hh:mm");
+
 
     public NoteTakrFragment() {
     }
@@ -127,7 +141,22 @@ public class NoteTakrFragment extends Fragment {
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialogFragment t = new DatePickerDialogFragment();
+                DatePickerDialogFragment t = DatePickerDialogFragment.createDatePicker(dateObj, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        String dateS = year + "/" + month + "/" + dayOfMonth;
+                        Date newDate;
+
+                        try {
+                            newDate = dateF.parse(dateS);
+                            dateObj.setTime(newDate.getTime());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        date.setText(dateF.format(dateObj));
+                    }
+                });
                 t.show(getFragmentManager(), "datePikr");
             }
         });
@@ -135,12 +164,29 @@ public class NoteTakrFragment extends Fragment {
         time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TimePickerDialogFragment t = new TimePickerDialogFragment();
-                t.show(getFragmentManager(), "timePikr");
+                TimePickerDialogFragment t = TimePickerDialogFragment.create(dateObj, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        String timeS = hourOfDay + ":" + minute;
+                        Date newDate;
+
+                        try {
+                            newDate = timeF.parse(timeS);
+                            dateObj.setTime(newDate.getTime());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        time.setText(timeF.format(dateObj));
+                    }
+                });
+                t.show(getFragmentManager(), "et_time");
 
             }
         });
 
+        date.setText(dateF.format(dateObj));
+        time.setText(timeF.format(dateObj));
 
         return v;
     }
