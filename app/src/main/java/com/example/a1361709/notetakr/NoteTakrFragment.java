@@ -65,14 +65,17 @@ public class NoteTakrFragment extends Fragment {
         date = (EditText) v.findViewById(R.id.et_date);
         time = (EditText) v.findViewById(R.id.et_time);
 
-        clr_01.setColor(255,90,90);
-        clr_02.setColor(255,120,30);
-        clr_03.setColor(255,255,90);
-        clr_04.setColor(90,255,90);
-        clr_05.setColor(90,255,255);
-        clr_06.setColor(90,90,255);
-        clr_07.setColor(255,90,255);
-        clr_08.setColor(255,255,255);
+        clr_01.setColor(getResources().getColor(R.color.color_01));
+        clr_02.setColor(getResources().getColor(R.color.color_02));
+        clr_03.setColor(getResources().getColor(R.color.color_03));
+        clr_04.setColor(getResources().getColor(R.color.color_04));
+        clr_05.setColor(getResources().getColor(R.color.color_05));
+        clr_06.setColor(getResources().getColor(R.color.color_06));
+        clr_07.setColor(getResources().getColor(R.color.color_07));
+        clr_08.setColor(getResources().getColor(R.color.color_08));
+
+
+        noteView.setBackgroundColor(clr_08.getColor());
 
         clr_01.setOnClickListener(new View.OnClickListener() {
             @Override
