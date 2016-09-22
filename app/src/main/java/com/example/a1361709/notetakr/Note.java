@@ -13,13 +13,15 @@ public class Note {
     private boolean hasReminder;
     private Date date;
     private int category;
+    private Date created;
 
 
-    public Note(String title, String body, boolean hasReminder, Date d, int category) {
+    public Note(String title, String body, boolean hasReminder, Date d, Date created, int category) {
         this.title = title;
         this.body = body;
         this.hasReminder = hasReminder;
         this.date = d;
+        this.created = created;
         this.category = category;
     }
 
@@ -31,6 +33,7 @@ public class Note {
                 ", hasReminder=" + hasReminder +
                 ", d=" + date +
                 ", category=" + category +
+                ", created=" + created +
                 '}';
     }
 
@@ -73,5 +76,13 @@ public class Note {
 
     public int getCategory() {
         return category;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }
