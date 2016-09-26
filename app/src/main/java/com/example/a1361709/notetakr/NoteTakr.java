@@ -77,7 +77,7 @@ public class NoteTakr extends AppCompatActivity {
             int category = color.getColor();
             boolean isRemind = reminder_SW.isChecked();
 
-            Note note = new Note(title, body, isRemind, date, category);
+            Note note = new Note(title, body, isRemind, date, new Date(), category);
 
             Log.d("Save", note.toString());
 

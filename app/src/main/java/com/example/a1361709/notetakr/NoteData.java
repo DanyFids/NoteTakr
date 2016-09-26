@@ -79,4 +79,8 @@ public class NoteData {
         // this didn't work as expected Collections.copy(dataCopy, data);
         return dataCopy;
     }
+
+    public static Note getNoteById(int id){
+        return data.get(id);
+    }
 }
