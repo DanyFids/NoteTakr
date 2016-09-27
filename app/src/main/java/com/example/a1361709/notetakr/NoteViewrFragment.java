@@ -1,6 +1,7 @@
 package com.example.a1361709.notetakr;
 
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +11,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +24,7 @@ import java.util.List;
  */
 public class NoteViewrFragment extends Fragment {
 
+    private Spinner sort;
     private ListView notes;
     private ArrayAdapter<Note> adapter;
 
@@ -31,6 +36,21 @@ public class NoteViewrFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_note_viewr, container, false);
 
+        //Spinner
+        sort = (Spinner) root.findViewById(R.id.sp_sort);
+
+        List<String> sortMethods = new ArrayList<String>();
+        sortMethods.add("Title");
+        sortMethods.add("Category");
+        sortMethods.add("Reminder");
+        sortMethods.add("Date Created");
+        ArrayAdapter<String> sp_adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, sortMethods);
+
+        sp_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+
+        sort.setAdapter(sp_adapter);
+
+        // Note List
         // 1. Retrieve the ListView
         notes = (ListView) root.findViewById(R.id.lv_notes);
 
@@ -92,10 +112,17 @@ public class NoteViewrFragment extends Fragment {
             TextView title = (TextView) root.findViewById(R.id.tv_title);
             TextView body = (TextView) root.findViewById(R.id.tv_body);
             ImageView category = (ImageView) root.findViewById(R.id.iv_category);
+            ImageView reminder = (ImageView) root.findViewById(R.id.iv_reminder);
 
             title.setText(note.getTitle());
             body.setText(note.getBody());
-            category.setBackgroundColor(getResources());
+            category.setBackgroundColor(note.getCategory());
+
+            if(note.isHasReminder()){
+                reminder.setBackground(getResources().getDrawable(R.drawable.ic_remind_on));
+            }else{
+                reminder.setBackground(getResources().getDrawable(R.drawable.ic_remind_off));
+            }
 
             return root;
         }

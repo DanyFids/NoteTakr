@@ -2,26 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    android:background="?android:attr/activatedBackgroundIndicator">
+    android:background="?android:attr/activatedBackgroundIndicator"
+    android:weightSum="1">
 
 
     <ImageView
-        android:layout_width="30px"
+        android:layout_width="60px"
         android:layout_height="fill_parent"
         android:id="@+id/iv_category" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="1">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Foo"
-            android:id="@+id/tv_title" />
+            android:id="@+id/tv_title"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,5 +36,11 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/tv_title" />
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_reminder"
+        android:background="@drawable/ic_remind_on" />
 
 </LinearLayout>

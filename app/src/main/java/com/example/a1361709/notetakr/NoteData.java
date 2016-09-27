@@ -1,5 +1,7 @@
 package com.example.a1361709.notetakr;
 
+import android.graphics.Color;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,14 +16,14 @@ public class NoteData {
     private static final SimpleDateFormat format;
 
     // color values retrieved manually, for test data only.
-    private static final int BASE08_COLOR = R.color.color_01;
-    private static final int BASE09_COLOR = R.color.color_02;
-    private static final int BASE0A_COLOR = R.color.color_03;
-    private static final int BASE0B_COLOR = R.color.color_04;
-    private static final int BASE0C_COLOR = R.color.color_05;
-    private static final int BASE0D_COLOR = R.color.color_06;
-    private static final int BASE0E_COLOR = R.color.color_07;
-    private static final int BASE0F_COLOR = R.color.color_08;
+    private static final int BASE08_COLOR = Color.parseColor("#FF5A5A");
+    private static final int BASE09_COLOR = Color.parseColor("#FF781E");
+    private static final int BASE0A_COLOR = Color.parseColor("#FFFF5A");
+    private static final int BASE0B_COLOR = Color.parseColor("#5AFF5A");
+    private static final int BASE0C_COLOR = Color.parseColor("#5AFFFF");
+    private static final int BASE0D_COLOR = Color.parseColor("#5A5AFF");
+    private static final int BASE0E_COLOR = Color.parseColor("#FF5AFF");
+    private static final int BASE0F_COLOR = Color.parseColor("#FFFFFF");
 
     private static List<Note> data;
 
