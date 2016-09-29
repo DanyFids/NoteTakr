@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by 1361709 on 2016-09-08.
  */
-public class Note {
+public class Note implements Comparable<Note>{
     private String title;
     private String body;
     private boolean hasReminder;
@@ -84,5 +84,12 @@ public class Note {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    @Override
+    public int compareTo(Note o) {
+        if(this.title.compareTo(o.title) > 0) return 1;
+        else if(this.title.compareTo(o.title) == 0) return 0;
+        else return -1;
     }
 }

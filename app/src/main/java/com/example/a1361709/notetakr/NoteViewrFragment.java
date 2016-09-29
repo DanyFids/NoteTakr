@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -39,7 +41,10 @@ public class NoteViewrFragment extends Fragment {
         //Spinner
         sort = (Spinner) root.findViewById(R.id.sp_sort);
 
-        List<String> sortMethods = new ArrayList<String>();
+        final List<String> sortMethods = new ArrayList<String>();
+        final List<Note> data = NoteData.getData();
+        //final List<Note> sortedData;
+
         sortMethods.add("Title");
         sortMethods.add("Category");
         sortMethods.add("Reminder");
@@ -50,6 +55,56 @@ public class NoteViewrFragment extends Fragment {
 
         sort.setAdapter(sp_adapter);
 
+        sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //sortedData.addAll(data);
+                switch(sortMethods.get(position)) {
+                    case "title":
+                        Collections.sort(data, new Comparator<Note>() {
+                            @Override
+                            public int compare(Note o1, Note o2) {
+                                return o1.getTitle().compareTo(o2.getTitle());
+                            }
+                        });
+                        break;
+                    case "Category":
+                        Collections.sort(data, new Comparator<Note>() {
+                            @Override
+                            public int compare(Note o1, Note o2) {
+                                if(o1.getCategory() > o2.getCategory()) return 1;
+                                else if(o1.getCategory() == o2.getCategory()) return 0;
+                                else return -1;
+                            }
+                        });
+                        break;
+                    case "Reminder":
+                        Collections.sort(data, new Comparator<Note>() {
+                            @Override
+                            public int compare(Note o1, Note o2) {
+                                if(o1.isHasReminder() == o2.isHasReminder()) return 0;
+                                else if(o1.isHasReminder() && !o2.isHasReminder()) return 1;
+                                else return -1;
+                            }
+                        });
+                        break;
+                    case "Date Created":
+                        Collections.sort(data, new Comparator<Note>() {
+                            @Override
+                            public int compare(Note o1, Note o2) {
+                                return o1.getCreated().compareTo(o2.getCreated());
+                            }
+                        });
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         // Note List
         // 1. Retrieve the ListView
         notes = (ListView) root.findViewById(R.id.lv_notes);
@@ -59,7 +114,7 @@ public class NoteViewrFragment extends Fragment {
         adapter = new NoteDataAdapter(this.getContext());
 
         // 3.  for today we have sample data
-        final List<Note> data = NoteData.getData();
+
         adapter.addAll(data);
 
         // 4.  Connect the adapter to the ListView
